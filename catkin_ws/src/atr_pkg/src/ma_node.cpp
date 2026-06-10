@@ -27,19 +27,10 @@ int main(int argc, char *argv[])
     ros::Subscriber sub = nh.subscribe<std_msgs::String>("chao_topic", 10, &chao_callback);
     ros::Subscriber sub_2 = nh.subscribe<std_msgs::String>("yao_topic", 10, &yao_callback);
 
-    // ros::Rate loop_rate(1.0); // 1Hz
-
     while(ros::ok())
     {    
         // 处理订阅者收到的消息
         ros::spinOnce();        // 查看是否有新消息，如果有则调用回调函数
-
-        // std_msgs::String msg;
-        // msg.data = "ma: hello world";
-        // pub.publish(msg);
-        
-        // printf("sleep 1s ...\n");
-        // loop_rate.sleep(); // 暂停1秒
     }
     return 0;
 }
