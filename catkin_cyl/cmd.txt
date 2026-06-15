@@ -6,7 +6,28 @@ cd /workspace/ros1_test/catkin_cyl/
 
 catkin_make
 
+# 运行
 
+# 宿住机上执行(只在宿主机图形桌面终端执行)
+xhost +local:root
+
+# 容器里面执行
 cd /workspace/ros1_test/catkin_cyl/
-source devel/setup.bash
+
+export DISPLAY=:0 && \
+export QT_X11_NO_MITSHM=1 && \
+export LIBGL_ALWAYS_SOFTWARE=1 && \
+source /workspace/ros1_test/catkin_cyl/devel/setup.bash
+
 roslaunch wpr_simulation wpb_simple.launch
+
+# 那还要在启动容器时把 X11 挂进去，否则容器里永远连不上宿主机显示：
+docker run -it --rm \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -e XAUTHORITY=/root/.Xauthority \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  -v $HOME/.Xauthority:/root/.Xauthority:ro \
+  --name ros_noetic_gui \
+  <你的镜像名> \
+  bash
