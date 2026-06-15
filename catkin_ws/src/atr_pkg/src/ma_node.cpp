@@ -3,7 +3,7 @@
 
 void chao_callback(const std_msgs::String::ConstPtr& msg)
 {
-    ROS_INFO("[get chao topic] %s", msg->data.c_str());
+    ROS_WARN("[get chao topic] %s", msg->data.c_str());
 }
 
 void yao_callback(const std_msgs::String::ConstPtr& msg)
