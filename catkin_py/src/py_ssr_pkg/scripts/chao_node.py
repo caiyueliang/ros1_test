@@ -17,5 +17,5 @@ if __name__ == '__main__':
         msg = String()
         msg.data = '[chao_topic_py] hello world'
         pub.publish(msg)
-        rospy.logwarn('[chao_topic_py] publish msg success !')
+        rospy.loginfo('[chao_topic_py] publish msg success !')
         rate.sleep()
