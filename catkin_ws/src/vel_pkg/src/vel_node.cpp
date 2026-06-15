@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
         vel_msg.linear.x = 0.5;
         vel_msg.linear.y = 0.0;
         vel_msg.linear.z = 0.0;
-        
+
         vel_msg.angular.x = 0.0;
         vel_msg.angular.y = 0.0;
         vel_msg.angular.z = 0.5;

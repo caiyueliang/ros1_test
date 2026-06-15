@@ -12,11 +12,22 @@ catkin_make
 xhost +local:root
 
 # 容器里面执行
-cd /workspace/ros1_test/catkin_cyl/
-
+cd /workspace/ros1_test/catkin_cyl/ && \
 export DISPLAY=:0 && \
 export QT_X11_NO_MITSHM=1 && \
 export LIBGL_ALWAYS_SOFTWARE=1 && \
-source /workspace/ros1_test/catkin_cyl/devel/setup.bash
-
+pkill -9 -f gzserver; \
+pkill -9 -f gzclient; \
+pkill -9 -f gazebo; \
+pkill -9 -f rosmaster; \
+pkill -9 -f rosout; \
+pkill -9 -f robot_state_publisher; \
+pkill -9 -f joint_state_publisher; \
+pkill -9 -f spawn_model; \
+sleep 2; \
+rm -rf /root/.ros/log/*; \
+rm -f /root/.gazebo/server-*.log; \
+rm -f /root/.gazebo/gui-*.log; \
+source /opt/ros/noetic/setup.bash; \
+source devel/setup.bash; \
 roslaunch wpr_simulation wpb_simple.launch
