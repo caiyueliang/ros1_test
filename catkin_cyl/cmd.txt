@@ -1,0 +1,12 @@
+# wpr_simulation 放在 /workspace/catkin_cyl/src/ 这个目录下面
+/workspace/catkin_cyl/src/wpr_simulation/
+
+# 然后到下面这个目录，执行catkin_make
+cd /workspace/catkin_cyl/
+catkin_make
+
+
+# roslaunch
+cd /workspace/catkin_cyl/
+source devel/setup.bash
+roslaunch wpr_simulation wpb_simple.launch
