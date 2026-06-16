@@ -22,7 +22,7 @@ def lidar_callback(msg):
     if distance < 1.5:
         # 前方有障碍物
         rospy.logwarn("前方有障碍物")
-        vel_cmd.linear.x = 0.3
+        # vel_cmd.linear.x = 0.3
         vel_cmd.angular.z = 0.5
         count = 30
     else:
