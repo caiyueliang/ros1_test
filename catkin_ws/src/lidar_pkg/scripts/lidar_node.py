@@ -27,3 +27,5 @@ if __name__ == '__main__':
     rospy.logwarn('[lidar_node_py] init_node success !')
 
     lidar_sub = rospy.Subscriber('/scan', LaserScan, lidar_callback, queue_size=10)
+
+    rospy.spin()
