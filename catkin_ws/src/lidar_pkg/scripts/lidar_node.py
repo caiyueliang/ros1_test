@@ -9,7 +9,7 @@ def lidar_callback(msg):
     rospy.loginfo(f"前方距离: {distance} 米")
     if distance < 1.0:
         # 前方有障碍物
-        rospy.warn("前方有障碍物")
+        rospy.logwarn("前方有障碍物")
     else:
         # 前方没有障碍物
         rospy.loginfo("前方没有障碍物")
