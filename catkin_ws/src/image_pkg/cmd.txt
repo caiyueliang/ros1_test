@@ -1,0 +1,32 @@
+docker exec -it ros_noetic /bin/bash
+
+cd /workspace/ros1_test/catkin_ws/src/
+catkin_create_pkg image_pkg rospy sensor_msgs cv_bridge
+
+cd /workspace/ros1_test/catkin_ws/
+catkin_make
+
+# 启动仿真节点
+cd /workspace/ros1_test/catkin_cyl/ && \
+export DISPLAY=:0 && \
+export QT_X11_NO_MITSHM=1 && \
+export LIBGL_ALWAYS_SOFTWARE=1 && \
+pkill -9 -f gzserver; \
+pkill -9 -f gzclient; \
+pkill -9 -f gazebo; \
+pkill -9 -f rosmaster; \
+pkill -9 -f rosout; \
+pkill -9 -f robot_state_publisher; \
+pkill -9 -f joint_state_publisher; \
+pkill -9 -f spawn_model; \
+sleep 2; \
+rm -rf /root/.ros/log/*; \
+rm -f /root/.gazebo/server-*.log; \
+rm -f /root/.gazebo/gui-*.log; \
+source /opt/ros/noetic/setup.bash; \
+source devel/setup.bash; \
+roslaunch wpr_simulation wpb_balls.launch
+
+rosrun wpr_simulation ball_random_move
+
+rosrun image_pkg image_node.py
