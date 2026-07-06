@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="first_robot">
+  <!-- 机器人的身体部分 -->
+  <link name="base_link">
+    <!-- 机器人的外观描述 -->
+    <visual>
+      <!-- 沿着自己的几何中心的偏移和旋转量-->
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <!-- 机器人的几何形状 -->
+      <geometry>
+        <!-- 机器人的几何形状为圆柱体，半径为0.1米，高度为0.12米 -->
+        <cylinder radius="0.1" length="0.12"/>
+      </geometry>
+      <!-- 机器人的材质颜色，白色，半透明 -->
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 机器人的IMU部件，惯性测量传感器 -->
+  <link name="imu_link">
+    <!-- 部件的外观描述 -->
+    <visual>
+      <!-- 沿着自己的几何中心的偏移和旋转量-->
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <!-- 机器人的几何形状 -->
+      <geometry>
+        <!-- 机器人的几何形状为正方体 -->
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <!-- 机器人的材质颜色，黑色，半透明 -->
+      <material name="black">
+        <color rgba="0 0 0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 机器人的关节部分，用于组合机器人的部件，固定死 -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0.0 0.0 0.03 " rpy="0.0 0.0 0.0"/>
+  </joint>
+
+</robot>
