@@ -10,7 +10,7 @@ def generate_launch_description():
 
     # 声明一个urdf目录的参数，方便修改
     action_declare_arg_mode_path = launch.actions.DeclareLaunchArgument(
-        name='model  ',
+        name='model',
         default_value=urdf_path,
         description='Path to the URDF file'
     )
@@ -24,7 +24,7 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': open(urdf_file_path).read()}]
+        parameters=[{'robot_description': open(urdf_path).read()}]
     )
 
     action_joint_state_publisher = launch_ros.actions.Node(
