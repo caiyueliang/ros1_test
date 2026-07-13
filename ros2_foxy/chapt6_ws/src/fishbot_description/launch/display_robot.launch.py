@@ -7,6 +7,7 @@ def generate_launch_description():
     # Get the path to the URDF file
     urdf_file_path = get_package_share_directory('fishbot_description')
     urdf_path = os.path.join(urdf_file_path, 'urdf', 'first_robot.urdf')
+    rviz_config_path = os.path.join(get_package_share_directory('fishbot_description'), 'config', 'rviz.rviz')
 
     # 声明一个urdf目录的参数，方便修改
     action_declare_arg_mode_path = launch.actions.DeclareLaunchArgument(
@@ -37,7 +38,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', os.path.join(get_package_share_directory('fishbot_description'), 'rviz', 'display_robot.rviz')]
+        arguments=['-d', rviz_config_path]
     )
 
     return launch.LaunchDescription([
