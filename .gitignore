@@ -49,3 +49,6 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+ros2_foxy/chapt6_ws/install/
+ros2_foxy/chapt6_ws/log/
